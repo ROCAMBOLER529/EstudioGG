@@ -21,7 +21,7 @@ public class BotApplication implements CommandLineRunner {
 	@Override
     public void run(String... args) {
 		 log.info("Hello World from Application Runner");
-		 System.exit(0);
+		
     }
 	
 	@Bean

@@ -8,12 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.whatsup.bot.BotApplication;
-
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
-@EnableSwagger2
 public class botControler {
   
 	private Logger log = LoggerFactory.getLogger(botControler.class);
