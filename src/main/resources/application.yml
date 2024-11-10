@@ -1,2 +1,11 @@
 server:
   port: 20000
+  
+whatsup:
+  cellNumber:414660938406899
+  serviceUrl:https://graph.facebook.com/v20.0/
+  token:EAAP998NXCyIBOZBnFgZAtSCkUusK0HxH0ZAfZA3zrw71ZADveBsdtZBfw4OwZBlTEfi9p3gj2ZBgzM2iB6w4MfMWQZBGHgy76UpKeMl1dl7FHiZBJr4BmVYZAHyKBc2XJjVU4el9XDVcypAZBEe2NvRjWES63dxPpxhXp0cpzZAWtKYiOh5mQuxF9fbplNGZCAEZALiebZA7HqnZAQyGPov7Gnp7l13BFkx0YYQZDZD
+# Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+# Click nbfs://nbhost/SystemFileSystem/Templates/Other/properties.properties to edit this template
+
+
