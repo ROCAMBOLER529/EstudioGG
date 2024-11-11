@@ -5,26 +5,23 @@
 package com.whatsup.bot.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
-/**
- *
- * @author Gonzalo_Avalos
- */
+@Configuration
 public class WhatsupSecurityConfig {
-    @Value("${whatsup.token}")
-    private String token;
-
-    /**
-     * @return the token
-     */
-    public String getToken() {
-        return token;
+    @Value("${whatsapp.cellNumber}")
+    private String cellNumber;
+    
+   
+    public String getCellNumber() {
+        return cellNumber;
     }
 
     /**
-     * @param token the token to set
+     * @param cellNumber the cellNumber to set
      */
-    public void setToken(String token) {
-        this.token = token;
+    public void setCellNumber(String cellNumber) {
+        this.cellNumber = cellNumber;
     }
+
 }
