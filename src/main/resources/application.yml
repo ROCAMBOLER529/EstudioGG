@@ -3,8 +3,8 @@ server:
   
 whatsapp:
   api:
-    base-url: https://graph.facebook.com/v20.0/414660938406899/messages
-    token: EAAPplyLkMxgBOZB9PYzRgmZAG3p5stHjhtwaIBakoZBkcyQnBY58QnHDstxZAMtoHeyf4clcK1YIqoA8ZCGZC4SoAPAEyARFppDz4KazdiavM2nASV2fpzLK8hI5dygWszJFtiJrIU7oMIPwKnBclu4gzgIowZCYoylrQZB5Qy44o7Ul2wX1g7SkZCZC3bxSp0dIZAot2ZBRmOeGASV1ADbutc25B0WT
+    base-url: https://graph.facebook.com/v21.0/414660938406899/messages
+    token: EAAPplyLkMxgBO2mAYLv5J6NfAauHXMEY2jLBtn4t2UDDZAZAoKLt44wptcC9vCmlUonKlhZCRkeTOdqfzVBG8WEYUXdYZCG6NDarZCSuc3EKYXCKyqPjBPfUEOwqoBjZATehyvzcbt1wGvrSMeKpECIdy7hKBwOuZBjWwX4qHrvzIUwZC3QpSf9gROu04KXpioGoIag3AGX3pfjscR9MQFioA6rJ
   cellNumber: 414660938406899
 
 
