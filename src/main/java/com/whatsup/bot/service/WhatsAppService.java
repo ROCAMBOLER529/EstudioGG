@@ -60,7 +60,6 @@ public class WhatsAppService {
         return "";
     }
     
-//    @PostMapping("/webhook")
         public ResponseEntity<Void> getResponse(@RequestBody String payload, 
                                           @RequestHeader("X-Hub-Signature") String signature)
     {

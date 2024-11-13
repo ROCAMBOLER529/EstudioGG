@@ -1,5 +1,7 @@
 server:
   port: 20000
+  data:
+    path: C:/ruta/archivos/
   
 whatsapp:
   api:
