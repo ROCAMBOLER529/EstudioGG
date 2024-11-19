@@ -12,6 +12,8 @@ public class WhatsupSecurityConfig {
     @Value("${whatsapp.cellNumber}")
     private String cellNumber;
     
+    @Value("${whatsapp.templateName}")
+    private String templateName;
    
     public String getCellNumber() {
         return cellNumber;
@@ -22,6 +24,20 @@ public class WhatsupSecurityConfig {
      */
     public void setCellNumber(String cellNumber) {
         this.cellNumber = cellNumber;
+    }
+
+    /**
+     * @return the templateName
+     */
+    public String getTemplateName() {
+        return templateName;
+    }
+
+    /**
+     * @param templateName the templateName to set
+     */
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
     }
 
 }

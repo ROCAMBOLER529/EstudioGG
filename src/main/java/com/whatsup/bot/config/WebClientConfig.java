@@ -7,7 +7,9 @@ package com.whatsup.bot.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 /**
  *
@@ -15,7 +17,7 @@ import org.springframework.web.reactive.function.client.WebClient;
  */
 @Configuration
 public class WebClientConfig {
-    
+
     @Value("${whatsapp.api.base-url}")
     private String baseUrl;
 
@@ -26,8 +28,29 @@ public class WebClientConfig {
     public WebClient webClient(WebClient.Builder builder) {
         return builder
                 .baseUrl(baseUrl)
+                .filter(logRequest()) // Registrar la solicitud
+                .filter(logResponse()) // Registrar la respuesta
                 .defaultHeader("Authorization", "Bearer " + token)
                 .defaultHeader("Content-Type", "application/json")
                 .build();
+    }
+
+    private ExchangeFilterFunction logRequest() {
+        return ExchangeFilterFunction.ofRequestProcessor(clientRequest -> {
+            System.out.println("Request: " + clientRequest.method() + " " + clientRequest.url());
+            clientRequest.headers().forEach((name, values) -> values.forEach(value
+                    -> System.out.println(name + ": " + value)
+            ));
+            return Mono.just(clientRequest);
+        });
+    }
+
+    private ExchangeFilterFunction logResponse() {
+        return ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
+            System.out.println("Response Status: " + clientResponse.statusCode());
+            return clientResponse.bodyToMono(String.class)
+                    .doOnNext(body -> System.out.println("Response Body: " + body))
+                    .then(Mono.just(clientResponse));
+        });
     }
 }
