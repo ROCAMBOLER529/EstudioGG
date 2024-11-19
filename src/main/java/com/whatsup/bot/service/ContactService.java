@@ -40,7 +40,7 @@ public class ContactService {
 	            e.printStackTrace();
 	            return "redirect:/error?message=Error al guardar el archivo";
 	        }
-		return "redirect:/success";
+		return "redirect:/contactos";
 		
 	}
 }

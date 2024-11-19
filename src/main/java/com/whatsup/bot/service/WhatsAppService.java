@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -25,15 +26,48 @@ import reactor.core.publisher.Mono;
  */
 @Service
 public class WhatsAppService {
-   
+
     @Autowired
     WhatsupSecurityConfig config;
-    
+
     private final WebClient webClient;
 
     @Autowired
     public WhatsAppService(WebClient webClient) {
         this.webClient = webClient;
+    }
+
+    public void enviarMensajeTemplate(String numeroDestino, Map<String, String> parametros) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("messaging_product", "whatsapp");
+        body.put("to", numeroDestino);
+        body.put("type", "template");
+
+        Map<String, Object> template = new HashMap<>();
+        template.put("name", config.getTemplateName());
+        template.put("language", Map.of("code", "es_AR")); // Cambia el idioma si es necesario
+
+        if (parametros != null && !parametros.isEmpty()) {
+            template.put("components", new Object[]{
+                Map.of(
+                "type", "body",
+                "parameters", parametros.entrySet().stream()
+                .map(entry -> Map.of("type", "text", "text", entry.getValue()))
+                .toArray()
+                )
+            });
+        }
+
+        body.put("template", template);
+
+        this.webClient.post()
+                .header("Content-Type", "application/json")
+                .bodyValue(body)
+                .retrieve()
+                .bodyToMono(String.class)
+                .doOnSuccess(response -> System.out.println("Mensaje enviado correctamente: " + response))
+                .doOnError(error -> System.err.println("Error al enviar el mensaje: " + error.getMessage()))
+                .subscribe();
     }
 
     public void sendMessage(String recipientPhoneNumber, String messageText) {
@@ -54,37 +88,34 @@ public class WhatsAppService {
                 .doOnError(error -> System.err.println("Error: " + error.getMessage()))
                 .subscribe();
     }
-    
-    public String sendMenu()
-    {
+
+    public String sendMenu() {
         return "";
     }
-    
-        public ResponseEntity<Void> getResponse(@RequestBody String payload, 
-                                          @RequestHeader("X-Hub-Signature") String signature)
-    {
-         try {
-        String appSecret = "your_app_secret";
-        Mac mac = Mac.getInstance("HmacSHA256");
-        SecretKeySpec secretKeySpec = new SecretKeySpec(appSecret.getBytes(), "HmacSHA256");
-        mac.init(secretKeySpec);
-        //byte[] digest = mac.doFinal(payload.getBytes());
 
-        String calculatedSignature = "sha256=" ; // + Hex.encodeHexString(digest);
+    public ResponseEntity<Void> getResponse(@RequestBody String payload,
+            @RequestHeader("X-Hub-Signature") String signature) {
+        try {
+            String appSecret = "your_app_secret";
+            Mac mac = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secretKeySpec = new SecretKeySpec(appSecret.getBytes(), "HmacSHA256");
+            mac.init(secretKeySpec);
+            //byte[] digest = mac.doFinal(payload.getBytes());
 
-        if (!calculatedSignature.equals(signature)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            String calculatedSignature = "sha256="; // + Hex.encodeHexString(digest);
+
+            if (!calculatedSignature.equals(signature)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            // Procesa el payload aquí
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
-        // Procesa el payload aquí
-        return ResponseEntity.ok().build();
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
     }
 
     /**
      * @return the webClient
      */
-
 }
