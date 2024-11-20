@@ -9,12 +9,16 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class WhatsupSecurityConfig {
+
     @Value("${whatsapp.cellNumber}")
     private String cellNumber;
-    
+
     @Value("${whatsapp.templateName}")
     private String templateName;
-   
+
+    @Value("${whatsapp.templateVideo}")
+    private String templateVideo;
+
     public String getCellNumber() {
         return cellNumber;
     }
@@ -38,6 +42,20 @@ public class WhatsupSecurityConfig {
      */
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
+    }
+
+    /**
+     * @return the templateVideo
+     */
+    public String getTemplateVideo() {
+        return templateVideo;
+    }
+
+    /**
+     * @param templateVideo the templateVideo to set
+     */
+    public void setTemplateVideo(String templateVideo) {
+        this.templateVideo = templateVideo;
     }
 
 }

@@ -5,27 +5,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class BotApplication implements CommandLineRunner { 
+public class BotApplication implements CommandLineRunner {
 
-	private Logger log = LoggerFactory.getLogger(BotApplication.class);
-	
-	public static void main(String[] args) {
-		SpringApplication.run(BotApplication.class, args);
-		
-	}
-	
-	@Override
-    public void run(String... args) {
-		 log.info("Hello World from Application Runner");
-		
+    private Logger log = LoggerFactory.getLogger(BotApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(BotApplication.class, args);
+
     }
-	
-	@Bean
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+
+    @Override
+    public void run(String... args) {
+        log.info("Hello World from Application Runner");
+
+    }
+
 }
