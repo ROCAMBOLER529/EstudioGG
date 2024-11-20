@@ -5,7 +5,11 @@
 package com.whatsup.bot.service;
 
 import com.whatsup.bot.config.WhatsupSecurityConfig;
+import com.whatsup.bot.message.Component;
+import com.whatsup.bot.message.Video;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -13,10 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -26,6 +28,7 @@ import reactor.core.publisher.Mono;
  */
 @Service
 public class WhatsAppService {
+
 
     @Autowired
     WhatsupSecurityConfig config;
@@ -47,6 +50,12 @@ public class WhatsAppService {
         template.put("name", config.getTemplateName());
         template.put("language", Map.of("code", "es_AR")); // Cambia el idioma si es necesario
 
+        List<Component> componentes = new ArrayList<>();
+        Component componente = new Component();
+        componentes.add(componente);
+        
+        template.put("components",componentes );
+        
         if (parametros != null && !parametros.isEmpty()) {
             template.put("components", new Object[]{
                 Map.of(
