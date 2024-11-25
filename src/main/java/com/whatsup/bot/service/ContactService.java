@@ -11,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsup.bot.config.ContactConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Service
 public class ContactService {
 	
+        private static final Logger logger = LoggerFactory.getLogger(ContactService.class);
+    
 	@Autowired
 	ContactConfig config;
 	
@@ -25,6 +29,7 @@ public class ContactService {
 	        File file = Paths.get(config.path, fileName).toFile();
 
 	        if (file.exists()) {
+                    logger.error("El archivo ya existe. " + file.getName());
 	            return "redirect:/error?message=El archivo ya existe";
 	        }
 
@@ -36,10 +41,14 @@ public class ContactService {
 	        ObjectMapper mapper = new ObjectMapper();
 	        try (FileWriter writer = new FileWriter(file)) {
 	            mapper.writerWithDefaultPrettyPrinter().writeValue(writer, data);
+                    
 	        } catch (IOException e) {
 	            e.printStackTrace();
+                    logger.error(e.getMessage());
 	            return "redirect:/error?message=Error al guardar el archivo";
 	        }
+                logger.info("Archivo guardado " + file.getName());
+                
 		return "redirect:/contactos";
 		
 	}
