@@ -32,7 +32,7 @@ public class BotController {
     
     @GetMapping("/sendTemplate")
     public String sendMessageTemplate() {
-        whatsAppService.enviarMensajeTemplate("541145587174",null);
+        whatsAppService.enviarMensajeTemplate("54111545587174",null);
         return "Message sent!";
     }
 

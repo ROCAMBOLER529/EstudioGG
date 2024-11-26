@@ -61,7 +61,7 @@ public class WhatsAppService {
                 Map.of(
                 "type", "body",
                 "parameters", parametros.entrySet().stream()
-                .map(entry -> Map.of("type", "text", "text", entry.getValue()))
+                .map(entry -> Map.of("type", "video", "text", entry.getValue()))
                 .toArray()
                 )
             });
