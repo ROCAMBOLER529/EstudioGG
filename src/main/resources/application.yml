@@ -6,9 +6,7 @@ server:
 whatsapp:
   api:
     base-url: https://graph.facebook.com/v21.0/414660938406899/messages
-    token: EAAP998NXCyIBO7KUtIG4FZCa7LQx7r5nwFgzQsEeA3Ak5oIgLCQEJXumIfsE0ZCQ5NwHYuNG6ktUauKhKKtywWVQEQdvPgt3gt1OCpnLgYqhl7yGHigdvgpMORlA6zbZAzS80wWwZAJZChvUCtHZAstttEU4APLocgZAsUFZCMIEvbOwiDZBWEGH9hzk2udfUtDosqNHvCTjKdH2doAFmRtjIIvK4
+    token: EAAPplyLkMxgBO7HWvKaYLiE1JfHFVgmxWs7WTX8jez6yZABsZCR5QUJmviPQpBZAQur5zXdILIZCoKcCZA33QFBFBaNEuQ6WgZB3ZAFjkgaZAbDeOSjeK3HeSOoYhKMsk7TuTtofOkMswaowLMf4HfIte7LgKiZA2yN25jZBwZB0t2bec4e9X3oZCJpSjUvuorpcZAu4vCOHcPtSByBrgZAvblyZArqx0pi
   cellNumber: 414660938406899
   templateName: menuprincipal
-  templateVideoold: https://drive.google.com/file/d/1wU9Sm0cUnVn6nFewgmVxVQtCKzuvQJg_
-  templateVideoold1: https://drive.google.com/uc?export=download&id=1wU9Sm0cUnVn6nFewgmVxVQtCKzuvQJg_
   templateVideo: https://res.cloudinary.com/drkaz7gd6/video/upload/v1732592503/swjcivtyxi43nll7walh.mp4

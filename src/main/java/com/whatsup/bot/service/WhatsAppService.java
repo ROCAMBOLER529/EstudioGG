@@ -55,31 +55,27 @@ public class WhatsAppService {
         componentes.add(componente);
         
         template.put("components",componentes );
-        
-        if (parametros != null && !parametros.isEmpty()) {
-            template.put("components", new Object[]{
-                Map.of(
-                "type", "body",
-                "parameters", parametros.entrySet().stream()
-                .map(entry -> Map.of("type", "video", "text", entry.getValue()))
-                .toArray()
-                )
-            });
-        }
 
         body.put("template", template);
 
-        this.webClient.post()
+
+            this.sendObject(body);
+    }
+    
+    public void sendObject(Map<String, Object> mensaje )
+    {
+                this.webClient.post()
                 .header("Content-Type", "application/json")
-                .bodyValue(body)
+                .bodyValue(mensaje)
                 .retrieve()
                 .bodyToMono(String.class)
                 .doOnSuccess(response -> System.out.println("Mensaje enviado correctamente: " + response))
                 .doOnError(error -> System.err.println("Error al enviar el mensaje: " + error.getMessage()))
                 .subscribe();
+        
     }
 
-    public void sendMessage(String recipientPhoneNumber, String messageText) {
+    public Map<String, Object> sendMessage(String recipientPhoneNumber, String messageText) {
         Map<String, Object> payload = new HashMap<>();
         payload.put("messaging_product", "whatsapp");
         payload.put("to", recipientPhoneNumber);
@@ -89,13 +85,9 @@ public class WhatsAppService {
         text.put("body", messageText);
         payload.put("text", text);
 
-        this.webClient.post()
-                .body(Mono.just(payload), Map.class)
-                .retrieve()
-                .bodyToMono(String.class)
-                .doOnSuccess(response -> System.out.println("Response: " + response))
-                .doOnError(error -> System.err.println("Error: " + error.getMessage()))
-                .subscribe();
+        this.sendObject(payload);
+        
+        return payload;
     }
 
     public String sendMenu() {

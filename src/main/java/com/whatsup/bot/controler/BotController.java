@@ -26,7 +26,7 @@ public class BotController {
 
     @GetMapping("/sendMessage")
     public String sendMessage() {
-        whatsAppService.sendMessage("541145587174", "Hello from Spring!");
+        whatsAppService.sendMessage("54111545587174", "Nos comunicaremos con usted a la brevedad.");
         return "Message sent!";
     }
     
