@@ -10,6 +10,6 @@ package com.whatsup.bot.message.ButtonList;
  */
 public class Interactive {
     public String type =  "button";
-    public Body body ;
-    public Action action;
+    public Body body = new Body();
+    public Action action = new Action();
 }

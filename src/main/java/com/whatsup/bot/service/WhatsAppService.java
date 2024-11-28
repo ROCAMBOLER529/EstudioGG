@@ -4,7 +4,9 @@
  */
 package com.whatsup.bot.service;
 
+import com.whatsup.bot.builder.AgendaDiasBuilder;
 import com.whatsup.bot.config.WhatsupSecurityConfig;
+import com.whatsup.bot.message.ButtonList.Root;
 import com.whatsup.bot.message.Component;
 import com.whatsup.bot.message.Video;
 import java.util.ArrayList;
@@ -72,7 +74,18 @@ public class WhatsAppService {
                 .doOnSuccess(response -> System.out.println("Mensaje enviado correctamente: " + response))
                 .doOnError(error -> System.err.println("Error al enviar el mensaje: " + error.getMessage()))
                 .subscribe();
-        
+    }
+    
+        public void sendObject(Root mensaje )
+    {
+                this.webClient.post()
+                .header("Content-Type", "application/json")
+                .bodyValue(mensaje)
+                .retrieve()
+                .bodyToMono(String.class)
+                .doOnSuccess(response -> System.out.println("Mensaje enviado correctamente: " + response))
+                .doOnError(error -> System.err.println("Error al enviar el mensaje: " + error.getMessage()))
+                .subscribe();
     }
 
     public Map<String, Object> sendMessage(String recipientPhoneNumber, String messageText) {
@@ -90,6 +103,15 @@ public class WhatsAppService {
         return payload;
     }
 
+    public void enviarLista(String recipientPhoneNumber )
+    {
+        AgendaDiasBuilder builder = new AgendaDiasBuilder();
+        Root root = builder.build();
+        root.myto = recipientPhoneNumber;
+            this.sendObject(root);
+    }
+    
+    
     public String sendMenu() {
         return "";
     }

@@ -35,6 +35,13 @@ public class BotController {
         whatsAppService.enviarMensajeTemplate("54111545587174",null);
         return "Message sent!";
     }
+    
+        
+    @GetMapping("/sendDias")
+    public String sendList() {
+        whatsAppService.enviarLista("54111545587174");
+        return "Message sent!";
+    }
 
     @GetMapping("/index")
     public String home() {

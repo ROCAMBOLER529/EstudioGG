@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Gonzalo_Avalos
  */
 public class Root {
-    public String messaging_product;
+    public String messaging_product = "whatsapp";
     @JsonProperty("to") 
     public String myto;
     public String type= "interactive" ;
-    public Interactive interactive;
+    public Interactive interactive = new Interactive();
 }

@@ -6,10 +6,12 @@ package com.whatsup.bot.message.ButtonList;
 
 import java.util.ArrayList;
 
+
+
 /**
  *
  * @author Gonzalo_Avalos
  */
 public class Action {
-       public ArrayList<Button> buttons; 
+       public ArrayList<Button> buttons = new ArrayList<>(); 
 }
