@@ -6,7 +6,7 @@ server:
 whatsapp:
   api:
     base-url: https://graph.facebook.com/v21.0/414660938406899/messages
-    token: EAAPplyLkMxgBO0tQLp5UXowl79lYaueIRfjczNOgny4BslITZCIehC06GOqJqaJrTDpcLDZBoMCihnlZCEef5QtzXHRda84f04Qa7VQstV23hWrsdqZB6zP9hRinUiBR8ctUm8UZCaDug4ty0TyZANciZAZA6mvrWYdYU46iYiGrt5V9OK46FL3rRujbZAPMhi3ZAE7Ibkm35eO4Qv0f76RZAZAVFFjD
+    token: EAAP998NXCyIBO4ssNmgsqNSxvKoyeEki94mWRkJKcDphKislEfHcHegwryl9oIkSRoMahJNP91SZCNlKmRzC4QRoYzHwYywOleZB1dRxcO8IITieQoDUqy9FvZBsgaiR469B1NrDyv6spLKJapKXjJIj1nu8LnUQXWODaT9tRNhLZBKwXrBBGAfenZAFTHk3hpBM7PZBUhu0uhrXSIZCNSF3XVeegZDZD
   cellNumber: 414660938406899
   templateName: menuprincipal
-  templateVideo: https://drive.google.com/file/d/1wU9Sm0cUnVn6nFewgmVxVQtCKzuvQJg_
+  templateVideo: https://res.cloudinary.com/drkaz7gd6/video/upload/v1732592503/swjcivtyxi43nll7walh.mp4
