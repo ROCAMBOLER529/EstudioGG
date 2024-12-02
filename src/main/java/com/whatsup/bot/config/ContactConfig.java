@@ -8,6 +8,8 @@ public class ContactConfig {
 
     @Value("${server.data.path}")
     public String path;
-
+    
+        @Value("${server.data.events}")
+    public String eventsPath;
 
 }

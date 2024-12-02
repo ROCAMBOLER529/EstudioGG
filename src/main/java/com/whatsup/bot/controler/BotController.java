@@ -1,5 +1,6 @@
 package com.whatsup.bot.controler;
 
+import com.whatsup.bot.service.AgendaSender;
 import com.whatsup.bot.service.WhatsAppService;
 
 import org.slf4j.Logger;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BotController {
 
+    @Autowired
+    AgendaSender agendaSender;
+    
     @Autowired
     WhatsAppService whatsAppService;
     private Logger log = LoggerFactory.getLogger(BotController.class);
@@ -37,9 +41,9 @@ public class BotController {
     }
     
         
-    @GetMapping("/sendDias")
+    @GetMapping("/sendAgenda")
     public String sendList() {
-        whatsAppService.enviarLista("54111545587174");
+        agendaSender.Send("54111545587174");
         return "Message sent!";
     }
 
