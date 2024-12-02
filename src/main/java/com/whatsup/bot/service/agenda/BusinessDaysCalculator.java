@@ -2,6 +2,7 @@ package com.whatsup.bot.service.agenda;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class BusinessDaysCalculator {
 
  public static List<String> getNextBusinessDays(int numberOfDays) {
         List<String> businessDays = new ArrayList<>();
-        LocalDate currentDate = LocalDate.now();
+        LocalDate currentDate = DateUtil1.Now();
 
         // Loop until we get the requested number of business days
         while (businessDays.size() < numberOfDays) {

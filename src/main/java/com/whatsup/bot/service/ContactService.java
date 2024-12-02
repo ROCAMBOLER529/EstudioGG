@@ -20,6 +20,9 @@ public class ContactService {
 	
         private static final Logger logger = LoggerFactory.getLogger(ContactService.class);
     
+        @Autowired
+        EventService eventService;
+        
 	@Autowired
 	ContactConfig config;
 	
@@ -48,7 +51,7 @@ public class ContactService {
 	            return "redirect:/error?message=Error al guardar el archivo";
 	        }
                 logger.info("Archivo guardado " + file.getName());
-                
+                eventService.saveEvent(telefono, "CONTACTO_GUARDADO");
 		return "redirect:/contactos";
 		
 	}

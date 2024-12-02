@@ -43,7 +43,7 @@ public class WebhookController {
     
     @PostMapping("/webhook")
     public ResponseEntity<String> receiveWebhook(@RequestBody String payload) {
-        System.out.println("Webhook received: " + payload);
+      
         logger.info(payload);
         return ResponseEntity.ok("Event received");
     }
