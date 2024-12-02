@@ -4,6 +4,7 @@
  */
 package com.whatsup.bot.controler;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 import com.whatsup.bot.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,9 @@ public class ContactosController {
     @PostMapping("/save")
     public String saveData(@RequestParam String nombre,
             @RequestParam String apellido,
-            @RequestParam String telefono, Model model) {
+            @RequestParam String telefono, 
+            RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("mensajeTempotal", "Contacto guardado OK.");
-        return service.save(nombre, apellido, telefono);
+        return service.save(nombre, apellido, telefono, redirectAttributes);
     }
 }
